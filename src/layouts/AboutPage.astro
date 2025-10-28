@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  heroImage?: ImageMetadata;
+}
+
+const { title, description, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+      .about-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .about-header h1 {
+        font-family: var(--font-heading);
+        font-size: var(--text-5xl);
+        color: var(--accent-teal);
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .profile-section {
+        max-width: 800px;
+        margin: 0 auto 4rem auto;
+      }
+      .profile-image-container {
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+      .profile-image {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: var(--box-shadow);
+      }
+      .profile-content {
+        font-family: var(--font-body);
+        font-size: var(--text-lg);
+        line-height: 1.6;
+        color: rgb(var(--gray));
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .profile-content :global(p.intro) {
+        font-family: var(--font-heading);
+        font-size: var(--text-xl);
+        color: var(--accent-teal);
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 3rem;
+        line-height: 1.4;
+      }
+      .profile-content :global(p) {
+        margin-bottom: 1.5rem;
+      }
+      .profile-content :global(p:last-child) {
+        margin-bottom: 0;
+      }
+      @media (max-width: 768px) {
+        .profile-image {
+          width: 250px;
+          height: 250px;
+        }
+        .about-header h1 {
+          font-size: var(--text-4xl);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <article>
+        <div class="about-header">
+          <h1>{title}</h1>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section">
+            {
+              heroImage && (
+                <div class="profile-image-container">
+                  <Image
+                    src={heroImage}
+                    alt="Profile photo"
+                    class="profile-image"
+                    width={300}
+                    height={300}
+                  />
+                </div>
+              )
+            }
+            <div class="profile-content">
+              <slot />
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
