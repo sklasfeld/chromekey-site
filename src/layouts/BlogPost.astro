@@ -25,68 +25,119 @@ const {
     <BaseHead title={title} description={description} />
     <style>
       main {
-        width: calc(100% - 2em);
+        width: 100%;
         max-width: 100%;
         margin: 0;
       }
+
+      article {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 2em 1em;
+      }
+
+      .title {
+        text-align: center;
+        margin-bottom: 2em;
+      }
+
+      .title h1 {
+        margin: 0 0 0.5em 0;
+        line-height: 1.2;
+      }
+
+      .date {
+        font-size: 0.9em;
+        color: rgb(var(--gray));
+        margin-bottom: 1em;
+      }
+
+      .date * {
+        border-bottom: none !important;
+      }
+
+      .last-updated-on {
+        font-style: italic;
+        margin-top: 0.25em;
+      }
+
+      .original-post {
+        margin-top: 0.75em;
+        font-size: 0.9em;
+        color: rgb(var(--gray));
+      }
+
+      .original-post p {
+        margin: 0;
+      }
+
+      .original-post a {
+        color: var(--accent-teal);
+        text-decoration: none;
+      }
+
+      .original-post a:hover {
+        text-decoration: underline;
+      }
+
       .hero-image {
         width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 1em;
+        margin: 2em 0;
       }
+
       .hero-image img {
         display: block;
         width: 100%;
         height: auto;
         max-height: 400px;
         object-fit: cover;
-        margin: 0 auto;
         border-radius: 12px;
         box-shadow: var(--box-shadow);
       }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
-      }
-      .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
-      }
-      .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
+
       .image-credit {
         text-align: center;
-        font-size: 0.9em;
+        font-size: 0.8em;
         color: rgb(var(--gray));
-        margin-top: 0.5em;
+        margin-top: 0.75em;
       }
-      .original-post {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgb(var(--gray-light));
-        font-size: 0.9em;
+
+      .image-credit a {
         color: rgb(var(--gray));
-      }
-      .original-post a {
-        color: var(--accent-teal);
         text-decoration: none;
       }
-      .original-post a:hover {
-        text-decoration: underline;
+
+      .image-credit a:hover {
+        color: var(--accent-teal);
+      }
+
+      .content-divider {
+        border: none;
+        border-top: 2px solid var(--background-cream);
+        margin: 2em 0;
+      }
+
+      .prose {
+        color: rgb(var(--gray-dark));
+      }
+
+      @media (max-width: 720px) {
+        article {
+          padding: 1.5em 1em;
+        }
+
+        .title h1 {
+          font-size: var(--text-3xl);
+        }
+
+        .hero-image {
+          margin: 1.5em 0;
+        }
+
+        .hero-image img {
+          max-height: 300px;
+        }
       }
     </style>
   </head>
@@ -95,44 +146,45 @@ const {
     <Header />
     <main>
       <article>
-        <div class="hero-image">
-          {
-            heroImage && (
-              <>
-                <Image width={1020} height={510} src={heroImage} alt={heroImageDescription || ""} />
-                {heroImageCredit && (
-                  <div class="image-credit">
-                    Image: <a href={heroImageCredit.link}>{heroImageCredit.text}</a>
-                  </div>
-                )}
-              </>
-            )
-          }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <h1>{title}</h1>
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-              {
-                originalPost && originalPost.org && originalPost.link && (
-                  <div class="original-post">
-                    <p>
-                      Originally published at <a href={originalPost.link}>{originalPost.org}</a>
-                    </p>
-                  </div>
-                )
-              }
-            </div>
-            <hr />
+        <div class="title">
+          <h1>{title}</h1>
+          <div class="date">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+            {
+              originalPost && originalPost.org && originalPost.link && (
+                <div class="original-post">
+                  <p>
+                    Originally published at <a href={originalPost.link}>{originalPost.org}</a>
+                  </p>
+                </div>
+              )
+            }
           </div>
+        </div>
+
+        {
+          heroImage && (
+            <div class="hero-image">
+              <Image width={1020} height={510} src={heroImage} alt={heroImageDescription || ""} />
+              {heroImageCredit && (
+                <div class="image-credit">
+                  <a href={heroImageCredit.link}>{heroImageCredit.text}</a>
+                </div>
+              )}
+            </div>
+          )
+        }
+
+        <hr class="content-divider" />
+
+        <div class="prose">
           <slot />
         </div>
       </article>
