@@ -99,16 +99,10 @@ const {
           {
             heroImage && (
               <>
-                <Image
-                  width={1020}
-                  height={510}
-                  src={heroImage}
-                  alt={heroImageDescription || ""}
-                />
+                <Image width={1020} height={510} src={heroImage} alt={heroImageDescription || ""} />
                 {heroImageCredit && (
                   <div class="image-credit">
-                    Image:{" "}
-                    <a href={heroImageCredit.link}>{heroImageCredit.text}</a>
+                    Image: <a href={heroImageCredit.link}>{heroImageCredit.text}</a>
                   </div>
                 )}
               </>
@@ -131,8 +125,7 @@ const {
                 originalPost && originalPost.org && originalPost.link && (
                   <div class="original-post">
                     <p>
-                      Originally published at{" "}
-                      <a href={originalPost.link}>{originalPost.org}</a>
+                      Originally published at <a href={originalPost.link}>{originalPost.org}</a>
                     </p>
                   </div>
                 )
