@@ -11,8 +11,8 @@ import LandingPage from "../layouts/LandingPage.astro";
       <span class="highlight">Bioinformatics</span>
     </h1>
     <p class="tagline">
-      Separates what matters from what doesn't<br />
-      in your data and in your research questions.
+      Isolating signal from noise in genomic data,<br />
+      so you can focus on the biology that matters.
     </p>
     <div class="cta-container">
       <a href="#contact" class="btn btn-primary">Let's Work Together</a>
@@ -23,18 +23,22 @@ import LandingPage from "../layouts/LandingPage.astro";
   <!-- Story Section -->
   <section class="story" id="about">
     <div class="story-container">
-      <h2 class="section-title">The Chrome Key Philosophy</h2>
+      <h2 class="section-title">Why Chrome Key?</h2>
       <div class="story-content">
         <p>
-          During my PhD at Penn, I developed a method called <span class="greenscreen-highlight"
-            >Greenscreen</span
-          > for filtering artifacts from ChIP-seq data. The concept was simple: use the tools already
-          in your toolkit to remove the background noise obscuring your signal.
+          The name comes from <strong>chromakey</strong>—the technology behind greenscreens. It
+          removes distracting backgrounds to reveal what's important. That's exactly what I do with
+          your data.
         </p>
         <p>
-          That's still how I approach every project. Whether it's genomic analysis, statistical
-          genetics, or pipeline development, I help you see through the noise to the biology
-          beneath.
+          During my PhD at Penn studying plant epigenetics, I developed a method called
+          <span class="greenscreen-highlight">Greenscreen</span> for filtering artifacts from ChIP-seq
+          data. The approach was simple: use the right tools to strip away the noise and see the real
+          biological signal beneath.
+        </p>
+        <p>
+          Whether it's genomic analysis, statistical genetics, or pipeline development, I help you
+          separate what matters from what doesn't—transforming complex data into clear insights.
         </p>
       </div>
     </div>
@@ -47,7 +51,7 @@ import LandingPage from "../layouts/LandingPage.astro";
   .hero {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 2rem 4rem;
+    padding: 8rem 2rem 6rem; /* More spacious */
     text-align: center;
   }
 
@@ -55,7 +59,7 @@ import LandingPage from "../layouts/LandingPage.astro";
     font-family: var(--font-heading);
     font-size: 4rem;
     line-height: 1.1;
-    color: var(--black);
+    color: #1f2937; /* Dark gray instead of colored */
     margin-bottom: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -100,8 +104,9 @@ import LandingPage from "../layouts/LandingPage.astro";
 
   .btn-primary {
     background: var(--accent);
-    color: var(--background);
-    box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-weight: 500; /* Not too bold */
   }
 
   .btn-primary:hover {
@@ -112,19 +117,20 @@ import LandingPage from "../layouts/LandingPage.astro";
 
   .btn-secondary {
     background: transparent;
-    color: var(--accent-teal);
-    border: 3px solid var(--accent-teal);
+    color: var(--accent-secondary);
+    border: 3px solid var(--accent-secondary);
   }
 
   .btn-secondary:hover {
-    background: var(--accent-teal);
+    background: var(--accent-secondary);
     color: var(--background);
     transform: translateY(-2px);
   }
 
   .story {
     background: var(--background-cream);
-    padding: 5rem 2rem;
+    padding: 6rem 2rem; /* Increase section padding */
+    border-top: 1px solid var(--accent); /* Forest green line */
   }
 
   .story-container {
@@ -136,7 +142,7 @@ import LandingPage from "../layouts/LandingPage.astro";
     font-family: var(--font-heading);
     font-size: 3rem;
     margin-bottom: 2rem;
-    color: var(--accent-teal);
+    color: var(--accent-secondary);
     font-weight: 700;
     text-align: center;
     letter-spacing: -0.01em;
