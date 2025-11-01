@@ -1,24 +1,31 @@
 /*
   Chrome Key Bioinformatics - Mid-Century Modern Theme
   Inspired by atomic age design and optimistic 1950s-60s aesthetics
+  OPTIMIZED FOR ACCESSIBILITY
  */
+
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
 
 html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 18px; /* Accessible minimum */
+  line-height: 1.6; /* Good for readability */
 }
 
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 :root {
   /* Typography */
-  --font-heading: "DM Sans", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-main: "Atkinson Hyperlegible", sans-serif;
+  --font-size-base: 18px;
+  --line-height-base: 1.6;
 
   /* Typography Scale */
   --text-xs: 0.75rem;
@@ -32,28 +39,27 @@ body {
   --text-5xl: 3rem;
   --text-6xl: 4rem;
 
-  /* Mid-Century Modern Color Palette */
-  --accent: #e07a5f;
-  --accent-dark: #c86850;
-  --accent-teal: #3d9ba8;
-  --accent-teal-dark: #2a7b87;
-  --accent-mustard: #f2cc8f;
-
+  /* Chrome Key Inspired - Vibrant chroma key colors */
+  --accent: #065f46; /* Even darker - very professional */
+  --accent-dark: #064e3b;
+  --accent-secondary: #374151; /* Charcoal - professional & neutral */
+  --accent-secondary-dark: #1f2937;
+  --accent-tertiary: #f59e0b; /* Amber - works with plant/organic theme */
+  --border-light: #e5e7eb;
   /* Backgrounds */
-  --background: #f8f9fa;
-  --background-cream: #f4f1de;
+  --background: #fafaf9;
+  --background-cream: #f5f2e4; /* Very light amber - ties to your tertiary color */
   --background-slate: #2f3e46;
 
   /* Text Colors */
   --black: 26, 26, 26;
-  --gray: 47, 62, 70;
-  --gray-light: 244, 241, 222;
+  --gray: 60, 60, 60;
+  --gray-light: 160, 160, 160;
   --gray-dark: 26, 26, 26;
-  --gray-gradient: rgba(244, 241, 222, 90%), var(--background);
-
+  --gray-gradient: rgba(245, 245, 245, 90%), var(--background);
   --box-shadow:
-    0 2px 6px rgba(224, 122, 95, 15%), 0 8px 24px rgba(224, 122, 95, 20%),
-    0 16px 32px rgba(61, 155, 168, 10%);
+    0 2px 6px rgba(4, 120, 87, 0.15), /* forest green */ 0 8px 24px rgba(4, 120, 87, 0.1),
+    /* forest green softer */ 0 16px 32px rgba(55, 65, 81, 0.08); /* charcoal subtle */
 }
 
 @font-face {
@@ -73,10 +79,9 @@ body {
 }
 
 body {
-  font-family:
-    "Space Grotesk",
-    -apple-system,
-    sans-serif;
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
   margin: 0;
   padding: 0;
   text-align: left;
@@ -90,8 +95,8 @@ body {
 }
 
 main {
-  width: 100%;
-  max-width: 720px;
+  width: 720px;
+  max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
 }
@@ -103,7 +108,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
-  color: var(--accent-teal);
+  color: var(--accent-secondary);
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -137,7 +142,7 @@ b {
 }
 
 a {
-  color: var(--accent-teal);
+  color: var(--accent-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
   border-bottom: 2px solid transparent;
@@ -146,6 +151,15 @@ a {
 a:hover {
   color: var(--accent);
   border-bottom: 2px solid var(--accent);
+}
+
+/* Improved focus states for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 p {
@@ -159,13 +173,13 @@ p {
 
 textarea {
   width: 100%;
-  font-size: 16px;
+  font-size: 18px; /* Increased to match accessible minimum */
   background: var(--background-cream);
-  border: 3px solid var(--accent-teal);
+  border: 3px solid var(--accent-secondary);
   color: rgb(var(--gray-dark));
   border-radius: 12px;
   padding: 0.75em;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-main);
   transition: border-color 0.3s ease;
 }
 
@@ -175,13 +189,13 @@ textarea:focus {
 }
 
 input {
-  font-size: 16px;
+  font-size: 18px; /* Increased to match accessible minimum */
   background: var(--background-cream);
-  border: 3px solid var(--accent-teal);
+  border: 3px solid var(--accent-secondary);
   color: rgb(var(--gray-dark));
   border-radius: 12px;
   padding: 0.75em;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-main);
   transition: border-color 0.3s ease;
 }
 
@@ -197,7 +211,7 @@ table {
 }
 
 table th {
-  background: var(--accent-teal);
+  background: var(--accent-secondary);
   color: var(--background);
   padding: 1em;
   text-align: left;
@@ -222,24 +236,25 @@ code {
   padding: 4px 8px;
   background-color: var(--background-cream);
   border-radius: 6px;
-  color: var(--accent-teal);
-  font-family: "Space Mono", monospace;
-  font-size: 0.9em;
-  border: 2px solid var(--accent-mustard);
+  color: var(--accent-secondary);
+  font-family: var(--font-main);
+  font-size: 0.95em; /* Slightly larger for readability */
+  border: 2px solid var(--accent-tertiary);
 }
 
 pre {
   padding: 1.5em;
   border-radius: 12px;
   background: var(--background-slate);
-  border: 3px solid var(--accent-teal);
+  border: 3px solid var(--accent-secondary);
   overflow-x: auto;
 }
 
 pre > code {
   all: unset;
   color: var(--background-cream);
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-main);
+  font-size: 0.95em;
 }
 
 blockquote {
@@ -256,7 +271,7 @@ blockquote {
 
 hr {
   border: none;
-  border-top: 3px solid var(--accent-mustard);
+  border-top: 3px solid var(--accent-tertiary);
   margin: 3em 0;
 }
 
@@ -269,7 +284,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-main);
   font-weight: 600;
   background: var(--accent);
   color: var(--background);
@@ -279,7 +294,14 @@ button {
 button:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+  box-shadow: 0 4px 15px rgba(6, 95, 70, 0.3);
+}
+
+/* Enhanced focus state for buttons */
+.btn:focus,
+button:focus {
+  outline: 3px solid var(--accent-tertiary);
+  outline-offset: 2px;
 }
 
 /* Geometric accent elements */
@@ -287,7 +309,7 @@ button:hover {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: var(--accent-mustard);
+  background: var(--accent-tertiary);
   opacity: 0.3;
   position: absolute;
 }
@@ -296,7 +318,7 @@ button:hover {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background: var(--accent-teal);
+  background: var(--accent-secondary);
   opacity: 0.2;
   transform: rotate(15deg);
   position: absolute;
@@ -312,12 +334,14 @@ ol {
 
 li {
   margin-bottom: 0.5em;
+  line-height: 1.6; /* Improved readability */
 }
 
 li::marker {
   color: var(--accent);
 }
 
+/* Improved mobile accessibility */
 @media (max-width: 720px) {
   body {
     font-size: 18px;
@@ -336,8 +360,25 @@ li::marker {
   h1 {
     font-size: 2.5em;
   }
+
+  /* Larger touch targets on mobile */
+  button,
+  .btn,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input,
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
 }
 
+/* Screen reader only content */
 .sr-only {
   border: 0;
   padding: 0;
@@ -350,4 +391,33 @@ li::marker {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Skip to main content link for keyboard users */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: var(--accent);
+  color: var(--background);
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  top: 0;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

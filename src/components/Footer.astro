@@ -19,10 +19,29 @@ import { Icon } from "astro-icon/components";
 
 <style>
   footer {
+    position: relative; /* Add this line */
     padding: 2em 1em 6em 1em;
     background: linear-gradient(var(--gray-gradient)) no-repeat;
     color: rgb(var(--gray));
     text-align: center;
+  }
+
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(
+      to right,
+      var(--accent) 0%,
+      var(--accent) 33%,
+      var(--accent-tertiary) 33%,
+      var(--accent-tertiary) 66%,
+      var(--accent-secondary) 66%,
+      var(--accent-secondary) 100%
+    );
   }
   .social-links {
     display: flex;
@@ -32,9 +51,9 @@ import { Icon } from "astro-icon/components";
   }
   .social-links a {
     text-decoration: none;
-    color: var(--accent-teal);
+    color: var(--accent-secondary);
   }
   .social-links a:hover {
-    color: var(--accent-teal-dark);
+    color: var(--accent-secondary-dark);
   }
 </style>
