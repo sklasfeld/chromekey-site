@@ -26,8 +26,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     platform: "linkedin",
-    url: "https://www.linkedin.com/company/chrome-key-bioinformatics",
-    label: "Follow Chrome Key on LinkedIn",
+    url: "https://www.linkedin.com/in/samantha-klasfeld",
+    label: "Follow Samantha Klasfeld on LinkedIn",
     icon: "mdi:linkedin",
   },
 ];
