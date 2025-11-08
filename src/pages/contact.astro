@@ -1,0 +1,372 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Contact | ${SITE_TITLE}`}
+      description="Get in touch to discuss bioinformatics consulting, collaboration opportunities, or speaking engagements."
+    />
+    <style>
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .contact-header h1 {
+        font-family: var(--font-heading);
+        font-size: var(--text-5xl);
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .contact-header p {
+        font-family: var(--font-body);
+        font-size: var(--text-lg);
+        color: rgb(var(--gray));
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .contact-methods {
+        background: var(--background-cream);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        border: 3px solid var(--accent);
+      }
+
+      .contact-methods h2 {
+        font-size: var(--text-2xl);
+        color: var(--accent-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .direct-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-item .icon {
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .contact-item a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+        font-size: var(--text-lg);
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+
+      .contact-form {
+        background: var(--background);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+      }
+
+      .contact-form h2 {
+        font-size: var(--text-2xl);
+        color: var(--accent-secondary);
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--accent-secondary);
+        margin-bottom: 0.5rem;
+        font-size: var(--text-base);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 18px;
+        border: 3px solid var(--accent-secondary);
+        border-radius: 8px;
+        background: var(--background-cream);
+        color: rgb(var(--gray-dark));
+        font-family: var(--font-main);
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .form-group small {
+        display: block;
+        margin-top: 0.25rem;
+        color: rgb(var(--gray));
+        font-size: var(--text-sm);
+      }
+
+      .required {
+        color: var(--accent-tertiary);
+        font-weight: bold;
+      }
+
+      .submit-btn {
+        background: var(--accent);
+        color: white;
+        padding: 1rem 2.5rem;
+        font-size: var(--text-lg);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-family: var(--font-main);
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background: var(--accent-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(6, 95, 70, 0.3);
+      }
+
+      .submit-btn:focus {
+        outline: 3px solid var(--accent-tertiary);
+        outline-offset: 2px;
+      }
+
+      .form-note {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: var(--background-cream);
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-tertiary);
+        font-size: var(--text-sm);
+        color: rgb(var(--gray));
+      }
+
+      .success-message {
+        display: none;
+        background: var(--accent);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .success-message.show {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 2rem 1rem;
+        }
+
+        .contact-header h1 {
+          font-size: var(--text-4xl);
+        }
+
+        .contact-methods {
+          padding: 1.5rem;
+        }
+
+        .contact-form {
+          padding: 1.5rem;
+        }
+
+        .submit-btn {
+          padding: 0.875rem 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="contact-header">
+        <h1>Let's Connect</h1>
+        <p>
+          Interested in consulting services, collaboration, or speaking opportunities? I'd love to
+          hear from you.
+        </p>
+      </div>
+
+      <div class="contact-methods">
+        <h2>Direct Contact</h2>
+        <div class="direct-contact">
+          <div class="contact-item">
+            <Icon name="mdi:email" width={24} height={24} class="icon" />
+            <a href="mailto:sjk314@gmail.com">sjk314@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <Icon name="mdi:linkedin" width={24} height={24} class="icon" />
+            <a
+              href="https://www.linkedin.com/in/samantha-klasfeld"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Connect on LinkedIn
+            </a>
+          </div>
+          <div class="contact-item">
+            <Icon name="mdi:school" width={24} height={24} class="icon" />
+            <a
+              href="https://scholar.google.com/citations?user=YOUR_ID"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Publications
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="success-message" class="success-message">
+        <p><strong>Thank you for reaching out!</strong></p>
+        <p>I'll get back to you soon.</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/contact-success"
+        >
+          <!-- Hidden fields for Netlify Forms -->
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display: none;">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="form-group">
+            <label for="name">
+              Name <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              aria-required="true"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              Email <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-required="true"
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="organization"> Organization / Affiliation </label>
+            <input type="text" id="organization" name="organization" autocomplete="organization" />
+            <small>Optional: Where do you work or what institution are you affiliated with?</small>
+          </div>
+
+          <div class="form-group">
+            <label for="inquiry-type">
+              Type of Inquiry <span class="required">*</span>
+            </label>
+            <select id="inquiry-type" name="inquiry-type" required aria-required="true">
+              <option value="">Select one...</option>
+              <option value="consulting">Consulting Services</option>
+              <option value="collaboration">Research Collaboration</option>
+              <option value="speaking">Speaking Engagement</option>
+              <option value="general">General Question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">
+              Message <span class="required">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              aria-required="true"
+              placeholder="Tell me about your project, timeline, or what you'd like to discuss..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+
+          <div class="form-note">
+            <strong>Note:</strong> I typically respond within 1-2 business days. For urgent inquiries,
+            please email me directly.
+          </div>
+        </form>
+      </div>
+    </main>
+    <Footer />
+
+    <script>
+      // Handle form submission success
+      if (window.location.search.includes("success=true")) {
+        const successMessage = document.getElementById("success-message");
+        if (successMessage) {
+          successMessage.classList.add("show");
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+    </script>
+  </body>
+</html>
