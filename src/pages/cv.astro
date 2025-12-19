@@ -1,0 +1,425 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`CV | ${SITE_TITLE}`}
+      description="Professional experience and qualifications in bioinformatics consulting, genomic data analysis, and computational biology."
+    />
+    <style>
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .cv-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .cv-header h1 {
+        font-family: var(--font-heading);
+        font-size: var(--text-5xl);
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .cv-header .subtitle {
+        font-family: var(--font-body);
+        font-size: var(--text-xl);
+        color: var(--accent-secondary);
+        margin-bottom: 2rem;
+      }
+
+      .download-section {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: var(--accent);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: var(--text-lg);
+        transition: all 0.3s ease;
+      }
+
+      .download-btn:hover {
+        background: var(--accent-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(6, 95, 70, 0.3);
+      }
+
+      .cv-section {
+        margin-bottom: 3rem;
+      }
+
+      .cv-section h2 {
+        font-size: var(--text-3xl);
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--accent-secondary);
+      }
+
+      .experience-item,
+      .education-item {
+        margin-bottom: 2.5rem;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--accent-tertiary);
+        padding-bottom: 1rem;
+      }
+
+      .experience-item h3,
+      .education-item h3 {
+        font-size: var(--text-2xl);
+        color: var(--accent-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .meta {
+        font-size: var(--text-base);
+        color: rgb(var(--gray-light));
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .experience-item p,
+      .education-item p {
+        color: rgb(var(--gray));
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+
+      .experience-item ul,
+      .skills-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+
+      .experience-item li,
+      .skills-list li {
+        color: rgb(var(--gray));
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .experience-item li::before,
+      .skills-list li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill-category h3 {
+        font-size: var(--text-xl);
+        color: var(--accent-secondary);
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 2rem 1rem;
+        }
+
+        .cv-header h1 {
+          font-size: var(--text-4xl);
+        }
+
+        .experience-item,
+        .education-item {
+          padding-left: 1rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="cv-header">
+        <h1>Curriculum Vitae</h1>
+        <p class="subtitle">Bioinformatics Consultant & Computational Biologist</p>
+      </div>
+
+      <div class="download-section">
+        <a href="/Samantha_Klasfeld_CV.pdf" download class="download-btn">
+          <Icon name="mdi:download" width={24} height={24} />
+          Download PDF Version
+        </a>
+      </div>
+
+      <section class="cv-section">
+        <h2>Professional Experience</h2>
+
+        <div class="experience-item">
+          <h3>Independent Bioinformatics Consultant</h3>
+          <div class="meta">Genscience (via Chrome Key Bioinformatics LLC) • 2025 - Present</div>
+          <p>
+            Performed genetic analyses for drug target validation using large-scale biobank data to
+            evaluate the relationship between genomic variation and disease outcomes.
+          </p>
+          <ul>
+            <li>
+              Conducted subject-level genetic analyses within <a
+                href="https://www.ukbiobank.ac.uk/use-our-data/research-analysis-platform/"
+                >UK Biobank Research Analysis Platform (UKB-RAP)</a
+              > and <a href="https://www.researchallofus.org/data-tools/workbench/"
+                >All of Us Researcher Workbench</a
+              > to investigate the role of genomic variation in disease risk and progression
+            </li>
+            <li>
+              Applied statistical and bioinformatics methods including variant annotation (<a
+                href="https://www.ensembl.org/vep">VEP</a
+              >, <a href="https://github.com/konradjk/loftee">LOFTEE</a>), quality control
+              filtering, and association testing to interpret findings and support hypothesis-driven
+              study design
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>Postdoctoral Research Fellow</h3>
+          <div class="meta">Pfizer Inc. • Cambridge, MA • 2022 - 2025</div>
+          <p>
+            Led computational genetics research integrating multi-omics data from UK Biobank to
+            elucidate disease mechanisms and identify potential therapeutic targets.
+          </p>
+          <ul>
+            <li>
+              <b>Cardiomyopathy genetics</b>: Identified carriers of pathogenic variants in
+              cardiomyopathy causal genes using <a href="https://www.ncbi.nlm.nih.gov/clinvar/"
+                >ClinVar</a
+              >, <a href="https://github.com/konradjk/loftee">LOFTEE</a>, and <a
+                href="https://doi.org/10.1126/science.adg7492">AlphaMissense</a
+              > prediction algorithms, then performed statistical association testing to evaluate common
+              genetic modifiers of disease penetrance, onset, and severity in carriers versus non-carriers,
+              delivering actionable insights for drug target development in a first-author
+              <a href="https://doi.org/10.1016/j.xhgg.2025.100460">publication</a>
+            </li>
+            <li>
+              <b>Rare variant proteogenomics</b>: Evaluated associations between rare genetic
+              variants and protein expression using Olink data from <a
+                href="https://www.nature.com/articles/s41586-023-06592-6"
+                >UK Biobank Pharma Proteomics Project (PPP)</a
+              > to assess the utility of incorporating missense variant predictions into association
+              analyses
+            </li>
+            <li>
+              Integrated genetic and clinical data from ~500K exomes, EHRs, and self-reports,
+              developing version-controlled analytical pipelines with <a
+                href="https://seqera.io/nextflow/">Nextflow</a
+              >.
+            </li>
+            <li>
+              Communicated complex genetic findings to multidisciplinary audiences including wet lab
+              biologists and leadership
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>Graduate Student Researcher</h3>
+          <div class="meta">University of Pennsylvania • Philadelphia, PA • 2015 - 2022</div>
+          <p>
+            Served as computational lead studying cell fate and reprogramming in <i>Arabidopsis</i>,
+            developing novel methods for ChIP-seq quality control and analyzing multi-omics
+            epigenetic data to elucidate mechanisms of developmental plasticity.
+          </p>
+          <ul>
+            <li>
+              Developed the <a href="https://doi.org/10.1093/plcell/koac282">Greenscreen</a> method to
+              identify and filter false-positive ChIP-seq peaks caused by technical artifacts, demonstrating
+              efficacy across plant and animal model systems (<i>Arabidopsis</i>, <i>Drosophila</i>, <i
+                >Oryza sativa</i
+              >) in a first-author publication now used by 17+ research groups
+            </li>
+            <li>
+              Designed and executed NGS data analysis pipelines (ChIP-seq, RNA-seq, MNase-seq) to
+              characterize the activity and binding patterns of transcription factors and chromatin
+              regulators driving cellular reprogramming in response to environmental signals,
+              contributing to three second-author publications
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>Postbaccalaureate Research Fellow</h3>
+          <div class="meta">
+            National Human Genome Research Institute, NIH • Bethesda, MD • 2014 - 2015
+          </div>
+          <p>
+            Collaborated with computational biologists to analyze Hydractinia genomes, identifying
+            novel small RNAs during head regeneration and performing domain architecture searches to
+            characterize TRAF immune gene evolution across eukaryotes.
+          </p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Summer Undergraduate Research Fellow</h3>
+          <div class="meta">J. Craig Venter Institute • Rockville, MD • 2013</div>
+          <p>Conducted research in plant-pathogen genomics and genome assembly optimization.</p>
+          <ul>
+            <li>
+              Investigated novel microRNA regulatory mechanisms in the parasitic nematode
+              Rotylenchulus reniformis
+            </li>
+            <li>
+              Evaluated and optimized genome assembly tools (AHA and PBJelly) for gap closure and
+              scaffolding of Medicago truncatula PacBio long-read sequencing data
+            </li>
+            <li>
+              Contributed to plant genome assembly improvements and developed early proficiency in
+              bioinformatics pipeline development
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>Summer Undergraduate Research Fellow</h3>
+          <div class="meta">Boyce Thompson Institute • Ithaca, NY • 2012</div>
+          <p>
+            Developed computational methods for viral sequence classification in plant pathogen
+            detection.
+          </p>
+          <ul>
+            <li>
+              Improved siRNA sequence identification and classification algorithms for known and
+              novel viruses in sweet potato plant samples
+            </li>
+            <li>
+              Enhanced bioinformatics approaches for pathogen detection and characterization in
+              agricultural systems
+            </li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <h3>Undergraduate Research Fellow</h3>
+          <div class="meta">Cornell University • Ithaca, NY • 2010 - 2014</div>
+          <p>
+            Conducted molecular genetics research in crop improvement, focusing on genomic analysis
+            and marker development for plant breeding programs.
+          </p>
+          <ul>
+            <li>
+              Compared Genotype by Sequencing (GBS) data across multiple restriction enzymes against
+              Cucurbita pepo transcriptomes using BLAST analysis
+            </li>
+            <li>
+              Developed and validated KASP (Kompetitive Allele Specific PCR) markers for
+              agriculturally relevant genes in pepper breeding programs
+            </li>
+            <li>
+              Performed molecular genetics techniques including DNA extraction, PCR amplification,
+              and Sanger sequencing to investigate genotype-phenotype relationships and validate
+              candidate gene mutations in pepper varieties
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Education</h2>
+
+        <div class="education-item">
+          <h3>Doctor of Philosophy in Genomics and Computational Biology</h3>
+          <div class="meta">University of Pennsylvania • Philadelphia, PA • 2015 - 2021</div>
+          <p>
+            Advanced training in computational genomics, statistical genetics, and bioinformatics
+            method development with focus on epigenetics and transcriptional regulation.
+          </p>
+        </div>
+        <div class="education-item">
+          <h3>Bachelor of Science in Biology, Concentration in Computational Biology</h3>
+          <div class="meta">Cornell University • Ithaca, NY • 2010 - 2014</div>
+          <p>
+            Integrated molecular biology and computational approaches for plant genomics and crop
+            improvement research.
+          </p>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Genomic Analysis</h3>
+            <ul class="skills-list">
+              <li>Variant calling & annotation</li>
+              <li>Multi-omics data integration</li>
+              <li>ChIP-seq & RNA-seq analysis</li>
+              <li>Population genomics</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Data Quality & Methods</h3>
+            <ul class="skills-list">
+              <li>Quality control & validation</li>
+              <li>Signal-noise separation</li>
+              <li>Pipeline development</li>
+              <li>Reproducible workflows</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Pharmaceutical Applications</h3>
+            <ul class="skills-list">
+              <li>Rare disease genomics</li>
+              <li>Target validation</li>
+              <li>Biomarker discovery</li>
+              <li>Clinical trial support</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Publications</h2>
+        <p style="color: rgb(var(--gray)); line-height: 1.7;">
+          View my complete publication record and citation metrics on
+          <a
+            href="https://scholar.google.com/citations?user=qGD6a1sAAAAJ"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: var(--accent); text-decoration: underline;"
+          >
+            Google Scholar
+          </a>.
+        </p>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
